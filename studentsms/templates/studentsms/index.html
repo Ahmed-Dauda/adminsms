@@ -1,0 +1,121 @@
+{% extends 'studentsms/base.html' %}
+{% load mathfilters %}
+
+{% block title %} Index Page {% endblock %}
+
+{% block body %}
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .menu{
+        color: white;
+       
+    }
+    .re{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;  
+    }
+    .re>*{
+        flex: 1 1 auto;
+        margin: 5px;
+        border: 2px dotted black;
+    }
+    .table1{
+        /* width: 100%; */
+         margin: 0 auto 0 auto;
+         box-shadow: 5px 12px 5px black;
+         border: 2px dotted black;
+    }
+    tr:hover{
+        background-color: blanchedalmond;
+    }
+    .welcome{
+        padding: 10px;
+    }
+    th{
+        padding: 10px;
+    }
+
+</style>
+<div class = 'welcome bg-success text-white'>
+<h4>Hello, {{user.username}} welcome to Admin</h4>
+</div>
+
+<div class="re text-white">
+    
+        <div class="bg-success card-header">Total Students: {{counter}}</div>
+        <div class="bg-success card-header">JSS1: {{jss1}} | {{jss1|div:counter|mul:100|floatformat}}% </div>
+        <div class="bg-success card-header">JSS2: {{jss2}} | {{jss2|div:counter|mul:100|floatformat}}% </div>
+        <div class="bg-success card-header">JSS3: {{jss3}} | {{jss3|div:counter|mul:100|floatformat}}% </div>
+        <div class="bg-success card-header">SS1: {{ss1}} | {{ss1|div:counter|mul:100|floatformat}}% </div>
+        <div class="bg-success card-header">SS2: {{ss2}} | {{ss2|div:counter|mul:100|floatformat}}% </div>
+        <div class="bg-success card-header">SS3: {{ss3}} | {{ss3|div:counter|mul:100|floatformat}}% </div>
+        <!-- <div class="bg-success card-header">ff{{t|div:counter|mul:100}}</div> -->
+              
+</div>
+
+<div class="menu bg-success">
+    <a class="text-white " href="{% url 'studentsms:add' %}">Add Student</a><br>
+    <a  class="text-white " href="{% url 'studentsms:pdf_all' %}">Download all Records</a>
+</div>
+
+<hr>
+<div class="card-body text-center">
+<form action="" method="GET" enctype="multipart/form-data">
+{% csrf_token %}
+{{myfilter.form}}
+
+<button type="submit" class="btn btn-dark">search</button>
+<!-- <button type="reset" class="btn  btn-dark">refresh</button> -->
+</form>
+</div>
+<hr>
+<table style="margin-top: 50px;" class=" table1 table-responsive table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">names</th>
+        <th scope="col">class</th>
+        <th scope="col">dob</th>
+        <th scope="col">sex</th>
+        <th scope="col">admin_no</th>
+        <th scope="col">address</th>
+        <th scope="col">house</th>
+        <th scope="col">status</th>
+        <th scope="col">f-no</th>
+        <th scope="col">f-email</th>
+        <th scope="col">m-no</th>
+        <th scope="col">m-email</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+      <tr>
+        <td>{{post.names}}</td>
+        <td>{{post.level}}</td>
+        <td>{{post.dob}}</td>
+        <td>{{post.sex}}</td>
+        <td>{{post.admin_no}}</td>
+        <td>{{post.address}}</td>
+        <td>{{post.house}}</td>
+        <td>{{post.status}}</td>
+        <td>{{post.father_no}}</td>
+        <td>{{post.father_email|urlize}}</td>
+        <td>{{post.mother_no}}</td>
+        <td>{{post.mother_email|urlize}}</td>
+        <td><a href="{% url 'studentsms:update' post.pk %}">Edit</a></td>
+        <td><a class="text-danger" href="{% url 'studentsms:delete' post.pk %}">Delete</a></td>
+        <td><a class="" href="{% url 'studentsms:pdf_id' post.pk %}">Download</a></td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

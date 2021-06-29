@@ -1,0 +1,43 @@
+{% extends 'studentsms/base.html'%}
+{% load widget_tweaks %}
+
+{% block title %} 
+<h1>Add posts</h1>
+{% endblock %}
+
+{% block body %} 
+
+<div class="card-header bg-success text-white" >
+<form class="" action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<p>{% render_field form.names.label %}</p>
+<p>{% render_field form.names autofocus=True class="form-control" placeholder='Add Names Here' %}</p>
+<p>{% render_field form.dob.label %}</p>
+<p>{% render_field form.dob autofocus=True class="form-control" placeholder='Add date of birth Here' %}</p>
+<p>{% render_field form.sex.label %}</p>
+<p>{% render_field form.sex autofocus=True class="form-control" placeholder='Add sex Here' %}</p>
+<p>{% render_field form.level.label %}</p>
+<p>{% render_field form.level autofocus=True class="form-control" placeholder='Add class Here' %}</p>
+<p>{% render_field form.admin_no.label %}</p>
+<p>{% render_field form.admin_no autofocus=True class="form-control" placeholder='Add admin no Here' %}</p>
+<p>{% render_field form.house.label %}</p>
+<p>{% render_field form.house autofocus=True class="form-control" placeholder='Add house Here' %}</p>
+<p>{% render_field form.address.label %}</p>
+<p>{% render_field form.address autofocus=True class="form-control" placeholder='Add address Here' %}</p>
+<p>{% render_field form.status.label %}</p>
+<p>{% render_field form.status autofocus=True  class="form-control" placeholder='Add status Here' %}</p>
+<p>{% render_field form.father_no.label %}</p>
+<p>{% render_field form.father_no autofocus=True class="form-control" placeholder='Add father phone number Here' %}</p>
+<p>{% render_field form.mother_no.label %}</p>
+<p>{% render_field form.mother_no autofocus=True class="form-control" placeholder='Add mother phone number Here' %}</p>
+<p>{% render_field form.father_email.label %}</p>
+<p>{% render_field form.father_email autofocus=True class="form-control" placeholder='Add father email Here' %}</p>
+<p>{% render_field form.mother_email.label %}</p>
+<p>{% render_field form.mother_email autofocus=True class="form-control" placeholder='Add mother email Here' %}</p>
+<br>
+<button class="w-50 btn btn-dark ">Add Students</button>
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'studentsms/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+<title>Update page</title>
+{% endblock %}
+
+{% block body %}
+<div class="card-header bg-success text-white" >
+<form class="form-control" action="" method="POST" enctype="multipart/form-data">
+    {%csrf_token %}
+    {% for f in form %}
+    <p>{{f.label_tag}}</p>
+    <p>{{f|add_class:'form-control'}}</p>
+    {% endfor %}
+    
+   <button type="submit" class="btn  btn-dark">update records</button>
+   
+</form>
+</div>
+{% endblock %}

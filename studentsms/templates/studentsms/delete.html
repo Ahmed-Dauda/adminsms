@@ -1,0 +1,27 @@
+{% extends 'studentsms/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+<title>delete page</title>
+{% endblock %}
+
+{% block body %}
+<style>
+    .t{
+        padding: 30px;
+    }
+</style>
+<h1 class="t text-danger">Are you sure you want to delete {{item}}'s records?</h1>
+
+<div class="card-header h-50 bg-success text-white" >
+<form class="form-control" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+   <button type="submit" class="btn  btn-primary">confirm</button>
+   <hr>
+   <button class="btn  btn-primary"><a class="text-white" href="{% url 'studentsms:index' %}">concel</a></button>
+</form>
+
+</div>
+{% endblock %}

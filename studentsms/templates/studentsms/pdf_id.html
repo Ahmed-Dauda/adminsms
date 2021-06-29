@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>pdf all records</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>pdf all records</title>
+ 
+ <style>
+     @page{
+         size: a4 portrait;
+         
+     }
+     /* table { -pdf-keep-in-frame-mode: overflow;} */
+    td, tr{
+         border: 1px solid black;     
+     }
+     th{
+        
+         padding: 5px;
+     }
+     table{
+         border-collapse: collapse;
+         font-size: 12px;
+         text-align: left;
+     }
+     .h{
+       font-size: 20px;
+     }
+</style>
+  
+</head>
+  <body> 
+  <div class="h">
+  <h1 class="">Esteem Learning Centre, Lokogoma, Abuja</h1>
+  <h3>Total Number of Students: {{counter}}</h3>
+</div>
+
+  <table class=" table-responsive">
+    <thead>
+      <tr class="text-left">
+        <th scope="col">names</th>
+        <th scope="col">class</th>
+        <th scope="col">dob</th>
+        <th scope="col">admin_no</th>
+        <th scope="col">address</th>
+        <th scope="col">house</th>
+        <th scope="col">status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+      <tr style="text-align: center;">
+        <td>{{post.names}}</td>
+        <td>{{post.level}}</td>
+        <td>{{post.dob}}</td>
+        <td>{{post.admin_no}}</td>
+        <td>{{post.address}}</td>
+        <td>{{post.house}}</td>
+        <td>{{post.status}}</td>
+        
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+<!-- second table  -->
+
+<table style="margin-top: 50px;" class=" table1 table-responsive table-bordered">
+    <thead>
+      <tr>
+       
+        <th scope="col">father-no</th>
+        <th scope="col">father-email</th>
+        <th scope="col">mother-no</th>
+        <th scope="col">mother-email</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+      <tr style="text-align: center;">
+        
+        <td>{{post.father_no}}</td>
+        <td>{{post.father_email|urlize}}</td>
+        <td>{{post.mother_no}}</td>
+        <td>{{post.mother_email|urlize}}</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  </body>
+</html>
+
+
