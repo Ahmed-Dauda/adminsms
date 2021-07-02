@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
 # Create your views here.
-#@login_required(login_url ='/accounts/login/')
+@login_required(login_url ='/accounts/login/')
 def index(request):
    
     posts = students_reg.objects.order_by('-created_date')
