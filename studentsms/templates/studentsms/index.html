@@ -69,7 +69,8 @@
 <form class="" action="" method="GET" enctype="multipart/form-data">
 {% csrf_token %}
 
-{{myfilter.form'}}
+{{myfilter.form.label_tag}}
+<p>{{myfilter.form}}</p>
 
 <button type="submit" class="btn btn-dark">search</button>
 <!-- <button type="reset" class="btn  btn-dark">refresh</button> -->
