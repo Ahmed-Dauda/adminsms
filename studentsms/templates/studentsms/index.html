@@ -34,6 +34,7 @@
     }
     .welcome{
         padding: 10px;
+        width: 100%;
     }
     th{
         padding: 10px;
@@ -42,6 +43,9 @@
 </style>
 <div class = 'welcome bg-success text-white'>
 <h4>Hello, {{user.username}} welcome to Admin</h4>
+<a class="text-white " href="{% url 'studentsms:add' %}">Add Student</a><br>
+<a  class="text-white " href="{% url 'studentsms:pdf_all' %}">Download all Records</a>
+
 </div>
 
 <div class="re text-white">
@@ -55,11 +59,6 @@
         <div class="bg-success card-header">SS3: {{ss3}} | {{ss3|div:counter|mul:100|floatformat}}% </div>
         <!-- <div class="bg-success card-header">ff{{t|div:counter|mul:100}}</div> -->
               
-</div>
-
-<div class="menu bg-success">
-    <a class="text-white " href="{% url 'studentsms:add' %}">Add Student</a><br>
-    <a  class="text-white " href="{% url 'studentsms:pdf_all' %}">Download all Records</a>
 </div>
 
 <hr>
