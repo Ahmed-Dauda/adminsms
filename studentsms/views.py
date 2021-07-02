@@ -2,11 +2,13 @@ from django.shortcuts import render, HttpResponse,redirect, get_list_or_404
 from studentsms.models import students_reg
 from studentsms.forms import studentsform
 from studentsms.filters import StudentsFilter
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 # Create your views here.
-
+#@login_required(login_url ='/accounts/login/')
 def index(request):
-    
+   
     posts = students_reg.objects.order_by('-created_date')
     jss1 = students_reg.objects.filter(level__exact='JSS1').count()
     jss2 = students_reg.objects.filter(level__exact='JSS2').count()

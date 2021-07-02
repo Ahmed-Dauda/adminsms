@@ -1,6 +1,6 @@
 {% extends 'studentsms/base.html' %}
 {% load mathfilters %}
-
+{% load widget_tweaks %}
 {% block title %} Index Page {% endblock %}
 
 {% block body %}
@@ -9,6 +9,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
+        font-family: 'Times New Roman', Times, serif;
     }
     .menu{
         color: white;
@@ -64,10 +65,11 @@
 </div>
 
 <hr>
-<div class="card-body text-center">
-<form action="" method="GET" enctype="multipart/form-data">
+<div class="container card-header text-center">
+<form class="" action="" method="GET" enctype="multipart/form-data">
 {% csrf_token %}
-{{myfilter.form}}
+
+{{myfilter.form'}}
 
 <button type="submit" class="btn btn-dark">search</button>
 <!-- <button type="reset" class="btn  btn-dark">refresh</button> -->

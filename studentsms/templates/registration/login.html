@@ -1,0 +1,23 @@
+{% extends 'studentsms/base.html' %}
+{% load mathfilters %}
+{% load widget_tweaks %}
+{% block title %} Login Page {% endblock %}
+
+{% block body %}
+
+<div  style="font-size: 30px; margin: 20px auto;" class="container card-header">
+<form action="" method="POST" enctype="multipart/form-data">
+{% if form.errors %}
+<p class="text-danger">Your username or password mismatch. Try again</p>
+{% endif %}
+{% csrf_token %}
+
+{{form.username.label_tag}}
+<p>{{form.username|add_class:'form-control'|attr:'autofocus=True'|attr:'placeholder: enter username'}}</p>
+{{form.password.label_tag}}
+<p>{{form.password|add_class:'form-control'|attr:'autofocus=True'|attr:'placeholder: enter password'}}</p>
+<br>
+<button class="btn btn-primary bg-dark" type="submit" >submit</button>
+</form>
+</div>
+{% endblock %}
